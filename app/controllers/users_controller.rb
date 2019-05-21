@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(
       name: params[:name],
       email: params[:email],
-      image_name: "default_user.jpg"
+      image_name: "default_user.jpg",
       password: params[:password]
     )
     if @user.save
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
     else
       @error_message = "メールアドレスまたはパスワードが間違っています"
       @email = params[:email]
-      @password = params[:password] 
+      @password = params[:password]
 
       render("users/login_form")
     end
