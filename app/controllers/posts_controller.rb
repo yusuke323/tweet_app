@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user, {only: [:index, :show, :edit, :update]}
+  before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
+
   def index
     # Post.allにorderメソッドを用いて、新しい投稿が上から順に表示されるようにしてください
     @posts = Post.all.order(created_at: :desc)
